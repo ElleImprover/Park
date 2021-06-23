@@ -23,7 +23,8 @@ namespace ParkWebsite.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        [Route("ParkData/{buyagain?}")]
+        public IActionResult ParkData()
         {
             return View();
         }
