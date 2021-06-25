@@ -5,7 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 using ParkWebsite.Models;
+using ParkWebsite.ViewModels;
 
 namespace ParkWebsite.Controllers
 {
@@ -13,21 +15,29 @@ namespace ParkWebsite.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+
+            
         }
 
-        public IActionResult Index()
+        public IActionResult ParkData(string search)
         {
+            Data dt = new Data();
+            
+            if (!string.IsNullOrEmpty(search))
+            {
+                ViewBag.data = JObject.Parse(dt.GetResponseString(search));
+            }
+
+            //ParkViewModel pvM = new ParkViewModel();
+
             return View();
         }
 
-        [Route("ParkData/{buyagain?}")]
-        public IActionResult ParkData()
-        {
-            return View();
-        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

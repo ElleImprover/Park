@@ -48,9 +48,23 @@ namespace ParkWebsite
 
             app.UseEndpoints(endpoints =>
             {
+                //endpoints.MapControllerRoute(
+                //    name: "Parks",
+                //    pattern: "/ParkData/{search?}",
+                //    new { routeName = "Parks", controller = "Home", action = "ParkData" }
+                //    );
+
+
+
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    name: "Parks",
+                    pattern: "{controller=ParkData}/{action=ParkData}/{search?}");
+
+                //endpoints.MapControllerRoute(
+                //name: "default",
+                //pattern: "{controller=Home}/{action=ParkData}/{search?}");
+                //);
+
             });
         }
     }

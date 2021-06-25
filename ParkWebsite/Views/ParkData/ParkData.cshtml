@@ -1,0 +1,59 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Parks</h1>
+<br />
+@*<table>
+
+        <tr>
+         @Model.Park.Parkname
+        </tr>
+        <tr>
+            Borough: @Model.Park.Borough
+        </tr>
+        <tr>
+            Acres: @Model.Park.Acres
+        </tr>
+        <tr>
+            Description: @Model.Park.Description
+        </tr>
+    </table>*@
+@if (@Model.Parks.Count > 0)
+{
+    <table class="table">
+
+    @foreach (var property in Model.Parks)
+    {
+        <tr>
+            <td>ParkName: </td>
+            <td>@property.Parkname </td>
+        </tr>
+        <tr>
+            <td>Borough: </td>
+            <td>@property.Borough </td>
+        </tr>
+        <tr>
+            <td>Acres: </td>
+            <td>@property.Acres </td>
+        </tr>
+        <tr>
+            <td>Description: </td>
+            <td>@Html.Raw(@property.Description) </td>
+        </tr> 
+    }
+    </table>
+}
+else if (ViewBag.Search == true)
+{
+    <p>
+        There were no parks found matching your inquiry.
+    </p>
+}
